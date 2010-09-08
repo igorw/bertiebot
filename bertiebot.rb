@@ -1,3 +1,7 @@
+require 'bundler'
+
+Bundler.setup
+
 require 'cinch'
 
 trap("INT") {
