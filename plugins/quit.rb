@@ -6,7 +6,7 @@ module BertieBot
     match 'quit'
     
     def execute(m)
-      bot.quit "goodbye"
+      @bot.quit "goodbye"
     end
   end
 end

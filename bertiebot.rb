@@ -6,6 +6,7 @@ require 'cinch'
 require './plugins/ping'
 require './plugins/replace'
 require './plugins/quit'
+require './plugins/seen'
 
 trap("INT") {
 	puts
@@ -20,7 +21,8 @@ bot = Cinch::Bot.new do
 		c.plugins.plugins = [
 		  BertieBot::Ping,
       BertieBot::Replace,
-      BertieBot::Quit
+      BertieBot::Quit,
+      BertieBot::Seen
 		]
 	end
 end
