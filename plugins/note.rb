@@ -10,7 +10,7 @@ module BertieBot
     
     def initialize(*args)
       super
-      @notes = {}
+      @notes = Hash.new {|h,k| h[k] = []}
     end
     
     def listen(m)
@@ -20,16 +20,13 @@ module BertieBot
     end
     
     def execute(m, nick, note)
-      if !@notes.key?(nick)
-  	    @notes[nick] = []
-      end
       @notes[nick] << MemoStruct.new(m.user.nick, m.channel, note, Time.now)
       m.reply "Your note has been left for #{nick}"
     end
     
     def execute_getnotes(m)
-      if @notes.key?(m.user.nick) && @notes[m.user.nick].size > 0
-        for note in @notes[m.user.nick]
+      if @notes.key?(m.user.nick)
+        while note = @notes[m.user.nick].shift
           m.reply note.to_s
         end
         @notes[m.user.nick] = []
