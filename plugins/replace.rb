@@ -5,7 +5,7 @@ module BertieBot
     
     listen_to :channel
     prefix ''
-    match /^s\/(.+)\/(.+)/
+    match /s\/(.+)\/(.+)/
     
     def initialize(*args)
       super
