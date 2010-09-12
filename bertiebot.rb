@@ -8,6 +8,7 @@ require './plugins/replace'
 require './plugins/quit'
 require './plugins/seen'
 require './plugins/note'
+require './plugins/weather'
 
 trap("INT") {
 	puts
@@ -24,7 +25,8 @@ bot = Cinch::Bot.new do
       BertieBot::Replace,
       BertieBot::Quit,
       BertieBot::Seen,
-      BertieBot::Note
+      BertieBot::Note,
+      BertieBot::Weather
 		]
 	end
 end
