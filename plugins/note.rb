@@ -1,5 +1,6 @@
 # !note
 # !getnotes
+# !checknotes
 module BertieBot
   class Note
     include Cinch::Plugin
