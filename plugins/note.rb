@@ -15,7 +15,7 @@ module BertieBot
     
     def listen(m)
       if @notes.key?(m.user.nick) && @notes[m.user.nick].size > 0
-        m.reply "#{m.user.nick}: You have notes type !getnotes to retrieve them."
+        m.reply "#{m.user.nick}: You have notes, type !getnotes to retrieve them."
       end
     end
     
@@ -27,7 +27,7 @@ module BertieBot
     def execute_getnotes(m)
       if @notes.key?(m.user.nick)
         while note = @notes[m.user.nick].shift
-          m.reply note.to_s
+          bot.msg m.user.nick, note.to_s
         end
         @notes[m.user.nick] = []
       else
