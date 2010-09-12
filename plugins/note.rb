@@ -7,6 +7,7 @@ module BertieBot
     listen_to :join
     match /note (.+?) (.+)/
     match 'getnotes', method: :execute_getnotes
+    match 'checknotes', method: :execute_checknotes
     
     def initialize(*args)
       super
@@ -30,6 +31,14 @@ module BertieBot
           bot.msg m.user.nick, note.to_s
         end
         @notes[m.user.nick] = []
+      else
+        m.reply "No notes for you"
+      end
+    end
+    
+    def execute_checknotes(m)
+      if @notes.key?(m.user.nick) && @notes[m.user.nick].size > 0
+        m.reply "I have notes for you"
       else
         m.reply "No notes for you"
       end
