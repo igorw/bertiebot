@@ -9,6 +9,9 @@ require './plugins/quit'
 require './plugins/seen'
 require './plugins/note'
 require './plugins/weather'
+require './plugins/tweet'
+
+require 'yaml/store'
 
 trap("INT") {
 	puts
@@ -26,8 +29,10 @@ bot = Cinch::Bot.new do
       BertieBot::Quit,
       BertieBot::Seen,
       BertieBot::Note,
-      BertieBot::Weather
+      BertieBot::Weather,
+      BertieBot::Tweet
 		]
+		c.plugins.options[BertieBot::Tweet] = YAML::Store.new('config.tweet.yml')
 	end
 end
 
